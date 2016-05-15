@@ -3,6 +3,7 @@ import os.path
 import pickle
 from geopy.distance import vincenty
 import time
+from id import id
 
 def evaluate(craft):
 	pickle_path = 'aircraft/' + craft['hex'] + '.p'
@@ -14,7 +15,7 @@ def evaluate(craft):
 		if time_since_save < 600:
 			#print '%s saved lat is %s (%ss ago)' % (saved_state['hex'], str(saved_state['lat']), int(time_since_save))
 			distance = vincenty((saved_state['lat'], saved_state['lon']), (craft['lat'], craft['lon']))
-			print '%s has traveled %s in %ss' % (saved_state['hex'], distance.miles, int(time_since_save))
+		   print '%s has traveled %s in %ss' % (id(saved_state), distance.miles, int(time_since_save))
 
 		
 		
